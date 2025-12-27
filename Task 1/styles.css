@@ -3,7 +3,7 @@
 
 /*=============== VARIABLES CSS ===============*/
 :root {
-  --header-height: 3.5rem;
+  --header-height: 4.5rem;
 
   /*========== Colors ==========*/
   /* 
@@ -120,7 +120,7 @@ img {
 }
 
 .section {
-  padding-block: 5rem 1rem;
+  padding-block: 3.5rem 1rem;
 }
 
 .section__title {
@@ -136,26 +136,42 @@ img {
 
 /*=============== HEADER & NAV ===============*/
 .header{
-    position: fixed;
+    /* position: fixed;
     width: 100%;
     top: 0%;
     left: 0%;
     background-color: var(--body-color);
     z-index: var(--z-fixed);
-    transition: box-shadow .4s;
+    transition: box-shadow .4s; */
+    position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--body-color);
+  z-index: var(--z-fixed);
+  transition: box-shadow .4s, background-color .4s;
 }
 
 .nav{
-    height: var(--header-height);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  /* height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between; */
+  min-height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 1rem 0; /* 🔥 TOP & BOTTOM SPACE */
+
 }
 
 .nav__logo{
     color: white;
     font-weight: var(--font-semi-bold);
     transition: color .4s;
+    font-size: 1.25rem;
+  letter-spacing: 0.5px;
 }
 
 .nav__logo:hover{
@@ -186,6 +202,7 @@ img {
     .nav__list{
         text-align: center;
         display: flex;
+        align-items: center;
         flex-direction: column;
         row-gap: 1.5rem;
     }
@@ -239,7 +256,7 @@ img {
 /*=============== HOME ===============*/
 .home__container{
   row-gap: 4rem;
-  padding-block: 2.5rem 2rem;
+  padding-block: 1.5rem 2rem;
 }
 
 .home__content{
