@@ -1,3 +1,4 @@
-function toggleMenu() {
-    document.getElementById("navLinks").classList.toggle("active");
-}
+window.addEventListener("scroll",()=>{
+  document.querySelector(".navbar")
+    .classList.toggle("scrolled",window.scrollY>10);
+});
