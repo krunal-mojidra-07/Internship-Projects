@@ -1,21 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Simple To-Do List</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>To-Do App</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="todo-container">
-        <h2>My To-Do List</h2>
+<div class="todo-wrapper">
+  <div class="todo-container">
 
-        <input type="text" id="taskInput" placeholder="Enter a new task">
-        <button onclick="addTask()">Add Task</button>
-
-        <ul id="taskList"></ul>
+    <div class="top-bar">
+      <h2>📝 My To-Do List</h2>
+      <button id="darkToggle">🌙</button>
     </div>
 
-    <script src="script.js"></script>
+    <!-- INPUT -->
+    <div class="input-group">
+      <input type="text" id="taskInput" placeholder="Enter a new task">
+      <button id="addTask">Add</button>
+    </div>
+
+    <!-- FILTERS -->
+    <div class="filters">
+      <button class="filter active" data-filter="all">All</button>
+      <button class="filter" data-filter="pending">Pending</button>
+      <button class="filter" data-filter="completed">Completed</button>
+    </div>
+
+    <!-- PROGRESS -->
+    <div class="progress-box">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <p class="progress-text" id="progressText">0% Completed</p>
+
+    <!-- TASK LIST -->
+    <ul id="taskList"></ul>
+
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
