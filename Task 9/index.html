@@ -1,21 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Product Card</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Product Card UI</title>
+
+  <!-- Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="product-card">
-        <img src="https://via.placeholder.com/300" alt="Product Image">
-        <div class="product-details">
-            <h2>Wireless Headphones</h2>
-            <p>High-quality wireless headphones with noise cancellation and long battery life.</p>
-            <h3>₹2,999</h3>
-            <button>Buy Now</button>
-        </div>
-    </div>
+<!-- Dark Mode Toggle -->
+<div class="toggle">
+  <i class="ri-moon-line" id="toggleBtn"></i>
+</div>
 
+<!-- Product Grid -->
+<div class="product-grid">
+
+  <div class="product-card glass">
+    <span class="badge">20% OFF</span>
+    <i class="ri-heart-line wishlist" id="wishlistBtn"></i>
+
+    <img src="headphone.png" alt="Wireless Headphones" id="productImg">
+
+    <div class="product-details">
+      <h2>Wireless Headphones</h2>
+      <p>Noise cancellation with long battery life.</p>
+      <div class="rating">⭐⭐⭐⭐☆</div>
+      <h3>₹2,999</h3>
+      <button class="cart-btn" id="cartBtn">
+        <i class="ri-shopping-cart-line"></i> Add to Cart
+      </button>
+    </div>
+  </div>
+  
+  <div class="product-card glass">
+    <span class="badge">20% OFF</span>
+    <i class="ri-heart-line wishlist" id="wishlistBtn"></i>
+
+    <img src="smartphone.jpg" alt="smartphone" id="productImg">
+
+    <div class="product-details">
+      <h2>smartphone</h2>
+      <p>Powerful smartphone with sleek design, high-resolution display, and smooth performance for everyday use.</p>
+      <div class="rating">⭐⭐⭐⭐⭐</div>
+      <h3>₹19,999</h3>
+      <button class="cart-btn" id="cartBtn">
+        <i class="ri-shopping-cart-line"></i> Add to Cart
+      </button>
+    </div>
+  </div>
+
+  <div class="product-card glass">
+    <span class="badge">20% OFF</span>
+    <i class="ri-heart-line wishlist" id="wishlistBtn"></i>
+
+    <img src="smartwatch.png" alt="smartwatch" id="productImg">
+
+    <div class="product-details">
+      <h2>smartwatch</h2>
+      <p>Modern smartwatch with fitness tracking, notifications, and a vibrant display for an active lifestyle..</p>
+      <div class="rating">⭐⭐⭐☆☆</div>
+      <h3>₹4,999</h3>
+      <button class="cart-btn" id="cartBtn">
+        <i class="ri-shopping-cart-line"></i> Add to Cart
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- Modal -->
+<div class="modal" id="productModal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <img src="headphone.png" alt="">
+    <h2>Wireless Headphones</h2>
+    <p>High-quality wireless headphones with noise cancellation, deep bass, and long battery life.</p>
+    <h3>₹2,999</h3>
+    <button class="cart-btn">Add to Cart</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
