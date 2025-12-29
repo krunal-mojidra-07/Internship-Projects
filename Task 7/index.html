@@ -1,29 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Form</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Contact Us</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>Contact Us</h1>
+<button class="dark-toggle" id="darkToggle">🌙</button>
 
-<form id="contactForm">
-    <label>Name:</label>
-    <input type="text" id="name">
+<!-- FORM -->
+<div class="contact-container" id="formBox">
+  <h2>📩 Contact Us</h2>
 
-    <label>Email:</label>
-    <input type="email" id="email">
+  <div class="input-box">
+    <span>👤</span>
+    <input type="text" id="name" placeholder="Your Name">
+  </div>
 
-    <label>Message:</label>
-    <textarea id="message"></textarea>
+  <div class="input-box">
+    <span>📧</span>
+    <input type="email" id="email" placeholder="Your Email">
+  </div>
 
-    <button type="submit">Send Message</button>
+  <div class="input-box textarea">
+    <span>💬</span>
+    <textarea id="message" placeholder="Your Message"></textarea>
+  </div>
 
-    <p id="error"></p>
-</form>
+  <button id="sendBtn">
+    <span class="btn-text">Send Message</span>
+    <span class="loader"></span>
+  </button>
+</div>
+
+<!-- SUCCESS PAGE -->
+<div class="success-box" id="successBox">
+  <h2>🎉 Success!</h2>
+  <p>Your message has been sent successfully.</p>
+  <button onclick="location.reload()">Send Another Message</button>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
 
 <script src="script.js"></script>
 </body>

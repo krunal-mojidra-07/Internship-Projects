@@ -1,56 +1,152 @@
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 40px;
+/* ===== THEME ===== */
+:root{
+  --bg: linear-gradient(135deg,#e0e7ff,#fdf2f8);
+  --card:#ffffffcc;
+  --text:#0f172a;
+  --accent:#6366f1;
 }
 
-h1 {
-    margin-bottom: 20px;
+body.dark{
+  --bg: linear-gradient(135deg,#020617,#0f172a);
+  --card:#1e293bcc;
+  --text:#f8fafc;
 }
 
-form {
-    background: white;
-    padding: 25px;
-    width: 320px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+/* ===== GLOBAL ===== */
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:Segoe UI,system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text);
 }
 
-label {
-    display: block;
-    margin-top: 15px;
+/* ===== DARK TOGGLE ===== */
+.dark-toggle{
+  position:fixed;
+  top:20px;
+  right:20px;
+  border:none;
+  background:var(--card);
+  font-size:20px;
+  padding:10px 12px;
+  border-radius:50%;
+  cursor:pointer;
 }
 
-input, textarea {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
+/* ===== CARD ===== */
+.contact-container,
+.success-box{
+  width:360px;
+  background:var(--card);
+  backdrop-filter:blur(14px);
+  padding:30px;
+  border-radius:22px;
+  box-shadow:0 25px 50px rgba(0,0,0,.25);
+  text-align:center;
 }
 
-textarea {
-    resize: none;
-    height: 80px;
+/* ===== INPUT WITH ICON ===== */
+.input-box{
+  display:flex;
+  align-items:center;
+  background:#eef2ff;
+  border-radius:14px;
+  padding:12px;
+  margin-bottom:14px;
 }
 
-button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 20px;
-    background: #2196F3;
-    color: white;
-    border: none;
-    cursor: pointer;
+.input-box span{
+  margin-right:10px;
 }
 
-button:hover {
-    background: #1976D2;
+.input-box input,
+.input-box textarea{
+  border:none;
+  background:transparent;
+  outline:none;
+  width:100%;
 }
 
-#error {
-    color: red;
-    margin-top: 10px;
-    text-align: center;
+textarea{
+  resize:none;
+  height:100px;
+}
+
+/* ===== ERROR SHAKE ===== */
+.shake{
+  animation:shake .3s;
+}
+
+@keyframes shake{
+  0%{ transform:translateX(0); }
+  25%{ transform:translateX(-5px); }
+  50%{ transform:translateX(5px); }
+  75%{ transform:translateX(-5px); }
+  100%{ transform:translateX(0); }
+}
+
+/* ===== BUTTON ===== */
+button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:16px;
+  background:linear-gradient(135deg,#6366f1,#3b82f6);
+  color:white;
+  font-size:15px;
+  font-weight:600;
+  cursor:pointer;
+  transition:.25s;
+  position:relative;
+}
+
+button:hover{
+  transform:translateY(-3px);
+  box-shadow:0 15px 35px rgba(99,102,241,.45);
+}
+
+/* ===== LOADER ===== */
+.loader{
+  width:18px;
+  height:18px;
+  border:3px solid white;
+  border-top-color:transparent;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+  display:none;
+  margin:auto;
+}
+
+@keyframes spin{
+  to{ transform:rotate(360deg); }
+}
+
+/* ===== TOAST ===== */
+.toast{
+  position:fixed;
+  bottom:30px;
+  right:30px;
+  background:#111827;
+  color:white;
+  padding:14px 24px;
+  border-radius:999px;
+  opacity:0;
+  transform:translateY(20px);
+  transition:.4s;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ===== SUCCESS PAGE ===== */
+.success-box{
+  display:none;
 }

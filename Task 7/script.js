@@ -1,15 +1,48 @@
-document.getElementById("contactForm").addEventListener("submit", function(event) {
-    event.preventDefault();
+const nameInput = document.getElementById("name");
+const emailInput = document.getElementById("email");
+const messageInput = document.getElementById("message");
+const sendBtn = document.getElementById("sendBtn");
+const toast = document.getElementById("toast");
+const darkToggle = document.getElementById("darkToggle");
+const formBox = document.getElementById("formBox");
+const successBox = document.getElementById("successBox");
+const loader = document.querySelector(".loader");
+const btnText = document.querySelector(".btn-text");
 
-    let name = document.getElementById("name").value.trim();
-    let email = document.getElementById("email").value.trim();
-    let message = document.getElementById("message").value.trim();
-    let error = document.getElementById("error");
+/* TOAST */
+function showToast(msg){
+  toast.textContent = msg;
+  toast.classList.add("show");
+  setTimeout(()=>toast.classList.remove("show"),2000);
+}
 
-    if (name === "" || email === "" || message === "") {
-        error.innerText = "All fields are required!";
-    } else {
-        error.style.color = "green";
-        error.innerText = "Message sent successfully!";
-    }
-});
+/* FORM SUBMIT */
+sendBtn.onclick = () => {
+  const name = nameInput.value.trim();
+  const email = emailInput.value.trim();
+  const message = messageInput.value.trim();
+
+  if(!name || !email || !message || !email.includes("@")){
+    formBox.classList.add("shake");
+    showToast("Please enter valid details ❌");
+    setTimeout(()=>formBox.classList.remove("shake"),300);
+    return;
+  }
+
+  // LOADING
+  btnText.style.display="none";
+  loader.style.display="block";
+
+  setTimeout(()=>{
+    loader.style.display="none";
+    btnText.style.display="block";
+
+    formBox.style.display="none";
+    successBox.style.display="block";
+  },1500);
+};
+
+/* DARK MODE */
+darkToggle.onclick = () => {
+  document.body.classList.toggle("dark");
+};
