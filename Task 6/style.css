@@ -1,38 +1,122 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* ===== THEME ===== */
+:root{
+  --bg:linear-gradient(135deg,#eef2ff,#fdf2f8);
+  --card:rgba(255,255,255,.85);
+  --text:#0f172a;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
-    padding: 20px;
-    text-align: center;
+body.dark{
+  --bg:linear-gradient(135deg,#020617,#0f172a);
+  --card:#1e293bcc;
+  --text:#f8fafc;
 }
 
-h1 {
-    margin-bottom: 30px;
+/* ===== GLOBAL ===== */
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  font-family:Segoe UI,system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
 }
 
-/* Grid Container */
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-    padding: 10px;
+h1{
+  text-align:center;
+  padding:30px 0;
 }
 
-/* Cards */
-.card {
-    background: white;
-    padding: 40px 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    font-size: 18px;
-    transition: transform 0.3s;
+/* ===== DARK MODE BUTTON ===== */
+.dark-toggle{
+  position:fixed;
+  top:20px;
+  right:20px;
+  border:none;
+  padding:10px;
+  border-radius:50%;
+  cursor:pointer;
 }
 
-.card:hover {
-    transform: scale(1.05);
+/* ===== GRID ===== */
+.grid{
+  max-width:1200px;
+  margin:auto;
+  padding:20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:25px;
+}
+
+/* ===== CARD ===== */
+.card{
+  background:var(--card);
+  backdrop-filter:blur(14px);
+  border-radius:20px;
+  overflow:hidden;
+  text-align:center;
+  cursor:pointer;
+  box-shadow:0 15px 35px rgba(0,0,0,.15);
+  opacity:0;
+  transform:translateY(20px);
+  animation:fadeUp .6s forwards;
+}
+
+.card img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+}
+
+.card h3{
+  margin:15px 0 5px;
+}
+
+.card p{
+  opacity:.7;
+  font-size:14px;
+  padding-bottom:15px;
+}
+
+.card:hover{
+  transform:translateY(-8px) scale(1.02);
+  box-shadow:0 25px 50px rgba(0,0,0,.25);
+}
+
+/* ===== STAGGER ===== */
+.card:nth-child(1){ animation-delay:.1s }
+.card:nth-child(2){ animation-delay:.2s }
+.card:nth-child(3){ animation-delay:.3s }
+.card:nth-child(4){ animation-delay:.4s }
+.card:nth-child(5){ animation-delay:.5s }
+.card:nth-child(6){ animation-delay:.6s }
+
+@keyframes fadeUp{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* ===== MODAL ===== */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.5);
+  display:none;
+  justify-content:center;
+  align-items:center;
+}
+
+.modal-content{
+  background:var(--card);
+  padding:30px;
+  border-radius:20px;
+  width:300px;
+  text-align:center;
+}
+
+.close{
+  float:right;
+  cursor:pointer;
 }
