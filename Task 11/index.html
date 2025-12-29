@@ -1,40 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Simple Weather App</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="night">
 
-    <div class="weather-card">
-        <h2>Weather App</h2>
+<div class="weather-bg">
+  <div class="weather-card">
 
-        <div class="location">
-            <h3>Ahmedabad</h3>
-            <p>India</p>
-        </div>
-
-        <div class="weather-icon">
-            ☀️
-        </div>
-
-        <div class="temperature">
-            <h1>32°C</h1>
-            <p>Sunny</p>
-        </div>
-
-        <div class="details">
-            <div>
-                <p>Humidity</p>
-                <h4>45%</h4>
-            </div>
-            <div>
-                <p>Wind</p>
-                <h4>12 km/h</h4>
-            </div>
-        </div>
+    <!-- Search -->
+    <div class="search">
+      <input type="text" id="cityInput" placeholder="Search city...">
+      <button id="searchBtn">🔍</button>
     </div>
 
+    <!-- Loader -->
+    <div class="loader" id="loader"></div>
+
+    <!-- Weather Content -->
+    <div id="weatherContent">
+      <h1>Weather App</h1>
+      <h2 id="city">Ahmedabad, IN</h2>
+      <p class="country">India</p>
+
+      <div class="weather-icon" id="icon">🌙</div>
+
+      <div class="temp" id="temp">--°C</div>
+      <div class="condition" id="condition">---</div>
+
+      <div class="details">
+        <div class="detail-box">
+          💧
+          <p>Humidity</p>
+          <strong id="humidity">--%</strong>
+        </div>
+
+        <div class="detail-box">
+          🌬️
+          <p>Wind</p>
+          <strong id="wind">-- km/h</strong>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
