@@ -1,64 +1,112 @@
-const quizData = [
-    {
-        question: "What does HTML stand for?",
-        a: "Hyper Trainer Marking Language",
-        b: "Hyper Text Markup Language",
-        c: "High Text Machine Language",
-        d: "Hyper Tool Markup Language",
-        correct: "b"
-    },
-    {
-        question: "Which language is used for styling web pages?",
-        a: "HTML",
-        b: "JQuery",
-        c: "CSS",
-        d: "XML",
-        correct: "c"
-    },
-    {
-        question: "Which is a scripting language?",
-        a: "Java",
-        b: "C++",
-        c: "Python",
-        d: "JavaScript",
-        correct: "d"
-    }
+const questions = [
+  {
+    q: "What does HTML stand for?",
+    options: [
+      "Hyper Text Markup Language",
+      "High Text Machine Language",
+      "Hyperlinks Text Markup",
+      "None"
+    ],
+    answer: 0
+  },
+  {
+    q: "Which language styles web pages?",
+    options: [
+      "HTML",
+      "Python",
+      "CSS",
+      "Java"
+    ],
+    answer: 2
+  },
+  {
+    q: "Which is used for logic?",
+    options: [
+      "CSS",
+      "HTML",
+      "JavaScript",
+      "SQL"
+    ],
+    answer: 2
+  },
+  {
+    q: "Which HTML tag is used to create a hyperlink?",
+    options: [
+      "<link>",
+      "<a>",
+      "<href>",
+      "<url>"
+    ],
+    answer: 1
+  },
+  {
+    q: "Which CSS property controls text size?",
+    options: [
+      "font-style",
+      "text-size",
+      "font-size",
+      "text-style"
+    ],
+    answer: 2
+  }
 ];
 
-let currentQuestion = 0;
+
+let index = 0;
 let score = 0;
+let time = 10;
+let timer;
 
-function loadQuestion() {
-    const q = quizData[currentQuestion];
-    document.getElementById("question").innerText = q.question;
-    document.getElementById("optA").innerText = q.a;
-    document.getElementById("optB").innerText = q.b;
-    document.getElementById("optC").innerText = q.c;
-    document.getElementById("optD").innerText = q.d;
+const questionEl = document.getElementById("question");
+const optionsEl = document.getElementById("options");
+const progressEl = document.getElementById("progress");
+const timerEl = document.getElementById("timer");
+const quizBox = document.getElementById("quizBox");
+const scoreBox = document.getElementById("scoreBox");
+const scoreText = document.getElementById("scoreText");
+
+function loadQuestion(){
+  clearInterval(timer);
+  time = 10;
+  timerEl.textContent = `⏱️ ${time}s`;
+
+  progressEl.textContent = `Question ${index+1} of ${questions.length}`;
+  questionEl.textContent = questions[index].q;
+  optionsEl.innerHTML = "";
+
+  questions[index].options.forEach((opt,i)=>{
+    const div = document.createElement("div");
+    div.className="option";
+    div.textContent = opt;
+    div.onclick = ()=>{
+      document.querySelectorAll(".option").forEach(o=>o.classList.remove("selected"));
+      div.classList.add("selected");
+      div.dataset.correct = i === questions[index].answer;
+    };
+    optionsEl.appendChild(div);
+  });
+
+  timer = setInterval(()=>{
+    time--;
+    timerEl.textContent = `⏱️ ${time}s`;
+    if(time===0) next();
+  },1000);
 }
 
-function nextQuestion() {
-    const answers = document.getElementsByName("answer");
-    let selected;
+function next(){
+  const selected = document.querySelector(".option.selected");
+  if(selected && selected.dataset.correct==="true") score++;
 
-    answers.forEach(ans => {
-        if (ans.checked) selected = ans.value;
-        ans.checked = false;
-    });
-
-    if (selected === quizData[currentQuestion].correct) {
-        score++;
-    }
-
-    currentQuestion++;
-
-    if (currentQuestion < quizData.length) {
-        loadQuestion();
-    } else {
-        document.querySelector(".quiz-container").innerHTML =
-            `<h2>Quiz Completed</h2>
-             <p>Your Score: ${score} / ${quizData.length}</p>`;
-    }
+  index++;
+  if(index < questions.length){
+    loadQuestion();
+  }else{
+    quizBox.style.display="none";
+    scoreBox.style.display="block";
+    scoreText.textContent = `${score} / ${questions.length}`;
+  }
 }
+
+document.getElementById("nextBtn").onclick = next;
 
 loadQuestion();

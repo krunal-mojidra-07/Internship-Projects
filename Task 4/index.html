@@ -1,28 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Quiz App</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Simple Quiz</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="quiz-container">
-    <h2>Simple Quiz</h2>
 
-    <p id="question">Question text</p>
+  <!-- QUIZ BOX -->
+  <div class="quiz-box" id="quizBox">
+    <h1>Simple Quiz</h1>
 
-    <div class="options">
-        <label><input type="radio" name="answer" value="a"> <span id="optA"></span></label>
-        <label><input type="radio" name="answer" value="b"> <span id="optB"></span></label>
-        <label><input type="radio" name="answer" value="c"> <span id="optC"></span></label>
-        <label><input type="radio" name="answer" value="d"> <span id="optD"></span></label>
+    <div class="quiz-info">
+      <span id="progress">Question 1 of 5</span>
+      <span id="timer">⏱️ 10s</span>
     </div>
 
-    <button onclick="nextQuestion()">Next</button>
+    <h3 id="question">Question text</h3>
 
-    <h3 id="score"></h3>
+    <div id="options">
+      <!-- options injected by JS -->
+    </div>
+
+    <button id="nextBtn">Next</button>
+  </div>
+
+  <!-- SCORE BOX -->
+  <div class="score-box" id="scoreBox">
+    <h1>🎯 Your Score</h1>
+    <h2 id="scoreText">0 / 3</h2>
+    <button onclick="location.reload()">Restart</button>
+  </div>
+
 </div>
 
-<script src="script.js">
+<script src="script.js"></script>
+</body>
+</html>
