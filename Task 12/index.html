@@ -1,48 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Simple E-commerce Page</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>My E-Commerce Store</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <h1>My E-Commerce Store</h1>
-        <p>Best products at affordable prices</p>
-    </header>
+<header>
+  <h1>My E-Commerce Store</h1>
+  <p>Best products at affordable prices</p>
 
-    <main class="product-container">
+  <div class="top-actions">
+    <button id="darkToggle">🌙</button>
+    <div class="cart-btn" id="openCart">🛒 <span id="cartCount">0</span></div>
+  </div>
+</header>
 
-        <div class="product-card">
-            <img src="https://via.placeholder.com/200" alt="Product Image">
-            <h2>Wireless Headphones</h2>
-            <p>High-quality sound with noise cancellation.</p>
-            <h3>₹2,999</h3>
-            <button>Add to Cart</button>
-        </div>
+<section class="products">
 
-        <div class="product-card">
-            <img src="https://via.placeholder.com/200" alt="Product Image">
-            <h2>Smart Watch</h2>
-            <p>Track your fitness and notifications easily.</p>
-            <h3>₹4,499</h3>
-            <button>Add to Cart</button>
-        </div>
+  <div class="product-card" data-name="powerbank" data-price="2999">
+    <div class="product-img-box">
+      <img src="powerbank.jpg" alt="Power Bank">
+    </div>
+    <span class="wishlist">❤️</span>
+    <h3>Power Bank</h3>
+    <p>Fast charging portable power bank</p>
+    <div class="price">₹2,999</div>
+    <button class="add-btn">Add to Cart</button>
+  </div>
 
-        <div class="product-card">
-            <img src="https://via.placeholder.com/200" alt="Product Image">
-            <h2>Bluetooth Speaker</h2>
-            <p>Portable speaker with powerful bass.</p>
-            <h3>₹1,999</h3>
-            <button>Add to Cart</button>
-        </div>
+  <div class="product-card" data-name="pendrive" data-price="4499">
+    <div class="product-img-box">
+      <img src="pan-drive.jpg" alt="Pen Drive">
+    </div>
+    <span class="wishlist">❤️</span>
+    <h3>Pen Drive</h3>
+    <p>High-speed USB storage device</p>
+    <div class="price">₹4,499</div>
+    <button class="add-btn">Add to Cart</button>
+  </div>
 
-    </main>
+  <div class="product-card" data-name="Bluetooth Speaker" data-price="1999">
+    <div class="product-img-box">
+      <img src="speaker.jpg" alt="Bluetooth Speaker">
+    </div>
+    <span class="wishlist">❤️</span>
+    <h3>Bluetooth Speaker</h3>
+    <p>Portable speaker with deep bass</p>
+    <div class="price">₹1,999</div>
+    <button class="add-btn">Add to Cart</button>
+  </div>
 
-    <footer>
-        <p>© 2025 My E-Commerce Store</p>
-    </footer>
+</section>
 
+<!-- CART SIDEBAR -->
+<div class="cart-sidebar" id="cartSidebar">
+  <span class="close-cart" id="closeCart">✖</span>
+  <h2>🛒 Your Cart</h2>
+
+  <ul id="cartItems"></ul>
+
+  <div class="cart-footer">
+    <h3>Total <span>₹<span id="totalPrice">0</span></span></h3>
+    <button id="checkoutBtn">Proceed to Checkout</button>
+  </div>
+</div>
+
+<!-- CHECKOUT -->
+<section class="checkout" id="checkout">
+  <h2>Checkout</h2>
+
+  <input type="text" placeholder="Full Name">
+  <input type="email" placeholder="Email">
+  <input type="text" placeholder="Delivery Address">
+
+  <h3>Payment Method</h3>
+  <label><input type="radio" name="pay" checked> Cash on Delivery</label><br>
+  <label><input type="radio" name="pay"> UPI</label><br>
+  <label><input type="radio" name="pay"> Card</label>
+
+  <button class="place-order">Place Order</button>
+</section>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<footer>
+  © 2025 My E-Commerce Store
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
